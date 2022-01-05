@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The NFT-PFP Market Health Index and how it's calculated - swombat.io</title>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  </head>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+        <nav id="header" class="fixed w-full z-10 top-0 block bg-gray-100">
+
+      <div id="progress" class="h-1 z-20 top-0" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
+
+      <div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+
+        <div class="pl-4">
+          <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl font-mono" href="#">
+            swombat.io
+          </a>
+        </div>
+
+                <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 z-20" id="nav-content">
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/index.html">Latest Threads</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/categories.html">Categories</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/about.html">About swombat</a>
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+    </nav>
+
+
+  <!--Container-->
+  <div class="container w-full md:max-w-3xl mx-auto pt-20">
+
+          <!--Title-->
+      <div class="font-sans">
+        <p class="text-base md:text-sm text-green-500 font-bold">&lt; <a href="/index.html" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">BACK</a></p>
+            <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">The NFT-PFP Market Health Index and how it's calculated</h1>
+            <p class="text-sm md:text-base font-normal text-gray-600">Published 05 Jan 2022</p>
+      </div>
+
+
+    <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal prose">
+
+      <div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">For the last few days, you can&#39;t throw a rock without hitting a youtuber talking about the amazing bull market we&#39;re in.<br /><br />But are we really in a bull market? And can we tell when it ends so we&#39;re not the last ones standing when the music stops?<br /><br />Enter the Market Health Index.<br /><br />👇 <a href="https://t.co/kfwipg0vlB">pic.twitter.com/kfwipg0vlB</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478794518745001984?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<!--more-->
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">At the end of the last proper bull run (in September), I found myself overexposed to projects that had.. let&#39;s say, poor prospects. I degen&#39;ed into them because lol wtf right?<br /><br />And that works out often enough in a bull market but it&#39;s terrible when the bull run ends.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478794888518983682?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Since then, I&#39;ve wished for some kind of signal that can better inform me about the state of the market. In particular, the critical signal I want to have is:<br /><br />I want to know when the music is about to stop, so I am not the one left standing without a chair.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478795125425905668?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">For a while I wished for someone else to do it, but damn: that Someone Else has turned out to be a lazy bastard who doesn&#39;t just do what I want.<br /><br />But I&#39;m a developer too so I rolled up my sleeves and did it myself.<br /><br />And now you get to have access to it too.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478795509628391426?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Now, there&#39;s a few important things to note about these graphs I&#39;m about to share.<br /><br />First thing is: they are not price charts from a stock market. You may be tempted to do technical analysis on these charts (I am). Know that if you do, you are skating on very thin ice.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478795778202218504?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Even when using &quot;proper&quot; market price and volume data, TA is pretty shaky at best. It gives signals that may or may not be worth something.<br /><br />Doing TA based on this data is, as <a href="https://twitter.com/intocryptoverse?ref_src=twsrc%5Etfw">@intocryptoverse</a> would put it, very &quot;dubious speculation&quot;. So don&#39;t schedule that Forbes interview ;-)</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478796199373283331?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Secondly, they are not meant to answer every question about the NFT market. I designed them to answer some very specific questions. Mostly one question:<br /><br />- is the music still playing?<br /><br />iow: are we flipping from bull back into bear?</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478796402444623876?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Having an early signal of this back in September would have saved me at least 3 eth back then. Maybe more.<br /><br />So now... I have an early signal of this.<br /><br />Let&#39;s dig into how I ended up building these graphs, and we&#39;ll have a final reveal of all the graphs at the end.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478796701511172103?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">First, I started with an assumption, an axiomatic statement that underlies this whole project:<br /><br />&gt; Certain projects (such as BAYC/MAYC) lead the market. When they pump, the market soon follows.<br /><br />I collected 10 projects that seemed relevant to this assertion: <a href="https://t.co/Bj4M6GExCg">pic.twitter.com/Bj4M6GExCg</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478797067665481731?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Could I have picked others? Sure. But I think these 10 are a good early indicator of momentum in the NFT PFP market.<br /><br />That&#39;s different from other sub-markets, like gaming NFTs... but they track the sentiment of the space I care about. When they pump, projects I care about follow.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478797393667710988?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">First I looked at sales volumes - but that actually weighted things too much in favour of expensive projects like punks and BAYC. So then I moved to sales counts, and that gave a more useful picture. Here&#39;s what it looks like for the last 90 days: <a href="https://t.co/DGkmPfJmpy">pic.twitter.com/DGkmPfJmpy</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478797645586042885?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I split things into 6-hour chunks, because, after trying a few other things, that resulted in graphs that seemed more useful: they react faster than a daily graph and yet aren&#39;t as random/noisy as an hourly graph.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478797939178971141?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Clearly visible in this graph is the Jimmy Fallon pump, right in the middle. Also, it is immediately obvious that the JF pump did not last very long, 3 days or so at most. Then the activity in the &quot;top ten&quot; projects subsided. The rest of the market soon followed into a deep bear. <a href="https://t.co/7GaZG0JnSz">pic.twitter.com/7GaZG0JnSz</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478798173468516361?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">This is very different from September. You can see what September looked like here. There were many dips but also many frequent spikes. But the JF pump just went straight back down.<br /><br />I build these graphs shortly after the JF pump, and it confirmed their usefulness. <a href="https://t.co/kQGgi7kpFf">pic.twitter.com/kQGgi7kpFf</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478799212687077388?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Because as we all know, after the Jimmy Fallon pump, the NFT market went quickly back into deep bear. Anyone who thought &quot;bull times again!&quot; and degen&#39;ed all over the place was left holding lots of worthless bags.<br /><br />With these signals, they could have been wiser.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478799429083844609?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I started posting these graphs regularly in the <a href="https://twitter.com/Llamaverse_?ref_src=twsrc%5Etfw">@Llamaverse_</a> discord, to get feedback. First the &quot;Alpha Council&quot; got access to them, then the &quot;Gold pass&quot; holders, updated every 6 hours, with my occasional commentary.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478799643987304448?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">One important feedback I got was, these graphs are a bit too complicated, too noisy. It takes extra mental effort to get the value.<br /><br />Another thing I noticed for myself is the stacked bar charts didn&#39;t work very well for spotting trends.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478799816763355146?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Why can&#39;t I just represent the health of the market as a straight number from 0 to 10?<br /><br />Of course I can. Just needs the numbers to be processed a bit more.<br /><br />In the spirit of total transparency, I&#39;ll explain exactly what I did to turn the sales counts into a 0-10 rating.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478800204216389632?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">The first thing I did was choose a sensible timescale for the market. I decided, by fiat, that the NFT market exists in its current form since at the earliest 1st Jan 2021. I ignored any activity before that.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478800421934309379?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Then, I added up the sales counts in each 6 hour period since Jan-1-2021, getting a simple &quot;number of sales&quot; graphs, basically the stacked chart you&#39;ve seen already, but without differentiating the projects from each other. <a href="https://t.co/t7LUP8Kymf">pic.twitter.com/t7LUP8Kymf</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478800800038199299?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I then took the natural logarithm of that. Why? Because I find it allows the graph to scale better as volumes increase or decrease. Log scale graphs tend to deal better with things that go up and down by a lot - which NFT sales do.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478801257435484165?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Then, I normalised this data set, making the highest possible value 10 (0 was already the lowest possible).<br /><br />So that gave me my 0-10 scale... but it was still very messy and jaggy and hard to follow. So then... I made moving averages to make it easier to read.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478801572213796867?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">And that&#39;s what you&#39;re seeing in the final chart, which has a 1-day, 7-day and 30-day moving average.<br /><br />It&#39;s important to realise that even the yellow line is a moving average! Remember, doing TA on this is... dubious. <a href="https://t.co/dCELBaCguN">pic.twitter.com/dCELBaCguN</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478801964083433491?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Did I stop here? Of course not.<br /><br />I was aware that focusing on just 10 projects might be a bit limiting. So I thought... where can i get a solid list of projects worth tracking?<br /><br />The obvious source was <a href="https://twitter.com/Zeneca_33?ref_src=twsrc%5Etfw">@Zeneca_33</a> &#39;s Floor Stats which I read daily.<a href="https://t.co/2Y7YFZscsj">https://t.co/2Y7YFZscsj</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478802438102654987?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I still wanted to weigh the top ten more heavily, so I made an index that gave equal weight to:<br /><br />1) the top ten<br />2) the &quot;zeneca old&quot; data set (the projects he lists as old, which are more established)<br /><br />Each data set got the full treatment, then they got averaged.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478802707435634699?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Here are the two graphs side by side. The first one is the top ten, the second one is top ten + zeneca old: <a href="https://t.co/Ha7zaOcHwA">pic.twitter.com/Ha7zaOcHwA</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478802933525458947?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">That was.. disappointing (especially since I spent half an hour typing in project names and then a few hours waiting for data to load from OpenSea, to be able to do this!). The broader data set is a bit smoother, slightly more bullish but... not much more informative.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478803140283621377?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I also tried adding the &quot;Zeneca new&quot; data set, weighted similarly (so topten+old+new each with equal weight).<br /><br />Here are all three in that order so you can compare for yourself: <a href="https://t.co/sbFSkbOmQJ">pic.twitter.com/sbFSkbOmQJ</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478803400796090374?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">My main conclusion from this is the more you include smaller, newer projects, the less the end of the bull market is clearly visible. So actually, while it&#39;s interesting to know that newer projects keep pumping after the music stops... it&#39;s not as useful a signal, for now.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478803591049752589?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">So after this journey, I ended up deciding to stick to the top ten as the main signal of market momentum... for now, anyway.<br /><br />I may revise this later. I almost certainly will, as I keep tinkering with this. But for now the top ten gives the best signals.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478803901738590222?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">So let&#39;s look at what&#39;s happening right now in the market.<br /><br />Everyone is shouting about a bull market, and it&#39;s clear from all the graphs that yes, indeed, there has just been some kind of bullish, high-momentum, lotsasales event: <a href="https://t.co/4yeGyfJDMG">pic.twitter.com/4yeGyfJDMG</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478804204668047363?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">What&#39;s a lot less clear is how the volume in the top ten has collapsed over the last day.<br /><br />Remembering that this is based on the stacked bar chart, let&#39;s take a look at it too: <a href="https://t.co/FRqvk616lr">pic.twitter.com/FRqvk616lr</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478804471136325634?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">There was a big sharp pump, and a smaller, wider pump, and then a crash down to bear market levels about 36 hours ago. And then the volume has somewhat recovered...</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478804914302337028?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Also visible in a slightly more zoomed out market health graph is that unlike the Jimmy Fallon pump, this didn&#39;t come out of nowhere. JF was a surprise, and short lived. This really started building up in mid-december: <a href="https://t.co/HFh934lPaX">pic.twitter.com/HFh934lPaX</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478805261800427529?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Here&#39;s with the JF pump to compare more easily (sorry should have included both graphs in the previous tweet!) <a href="https://t.co/snIxG8YfUB">pic.twitter.com/snIxG8YfUB</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478805421037166593?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">What do I think when I look at these charts.<br /><br />1) this bull run is more real than the JF pump.<br /><br />2) however, it&#39;s also, at this very moment, in a low-momentum phase, and so it might be finishing already.<br /><br />3) therefore, right now, I&#39;ll be taking profits rather than degen&#39;ing.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478805747005853700?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">If the 1 day SMA bounces back up (which would require a substantial increase of volume from where we are now), then it&#39;s good times again, and let&#39;s have another round of beers. But if not... beware. <a href="https://t.co/NOXb1DIwqT">pic.twitter.com/NOXb1DIwqT</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478806045862600708?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">The fact that it bounced off the 30-day SMA should not be over-interpreted. Remember, this is not a price chart. But it also seems kinda neat. The 30d SMA is almost like a bull market support band? <a href="https://t.co/s1MYQVAvms">pic.twitter.com/s1MYQVAvms</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478806424855662592?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">So what next?<br /><br />Well, right now: don&#39;t overinvest. Take profits.<br /><br />And watch this graph.<br /><br />But <a href="https://twitter.com/swombat?ref_src=twsrc%5Etfw">@swombat</a>, where can we watch this graph, we don&#39;t have access to your laptop!<br /><br />Glad you asked! Here&#39;s a few ways.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478806684231475213?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">First of all, I will tweet these graphs, updated, 3 times a week, on Monday, Wednesday and Friday. So, following me is a way to get access to these graphs, albeit not as frequently as is most useful.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478806903538995200?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">It&#39;s no secret I&#39;m a big fan of the <a href="https://twitter.com/Llamaverse_?ref_src=twsrc%5Etfw">@Llamaverse_</a> project started by <a href="https://twitter.com/NFTLlama?ref_src=twsrc%5Etfw">@NFTLlama</a>, and I&#39;m helping to build it out.<br /><br />Daily (incl weekends) access to these graphs via Discord is a benefit of holding a Silver Pass from the Llamaverse.<br /><br />As a bonus you also get my commentary on them.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478807355626295297?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">If daily is still not good enough, then get a Gold Pass and you will have these graphs every 6 hours. And the stacked bar chart thrown in too, because it is very sensitive and so gives the signals even faster.<br /><br />OpenSea URL: <a href="https://t.co/5UTBpplgGt">https://t.co/5UTBpplgGt</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478807941709021185?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Why am I doing this for Llamaverse? Because it&#39;s my favourite investment community, I&#39;m invested (I own 2 gold passes and 6 silver passes), and I want to see the project grows. Welcome to web3 :-)</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478808111234400256?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">There is one more way:<br /><br />If you are running another NFT community and would like your members to have access to these graphs, then find me on Discord and message me (my DMs are open). We may be able to work something out.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478808413245165573?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Of course, these graphs as they are are not the end of the road. I will be tweaking them. I may also look at including price data in them in some way, if it gives better signals. I may add pricing data as a different index. We&#39;ll see. If you follow me, you&#39;ll find out too ;-)</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478808737959882753?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Either way, I am curious to see what effect this essential trading information, disseminated widely, will have on the market. Will it make bull runs bigger? Will it make them shorter? Will it means more or fewer ppl get screwed?<br /><br />We&#39;ll see.<br /><br />gm &amp; gl</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1478809029216456706?ref_src=twsrc%5Etfw">January 5, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+
+
+    </div>
+
+  </div>
+
+  <!--Divider-->
+  <div class="px-8"></div>
+
+    <footer class="bg-white border-t border-gray-400 shadow">
+    <div class="container max-w-4xl mx-auto flex py-8">
+
+      <div class="w-full mx-auto flex flex-wrap">
+
+                <div class="flex w-full md:w-1/2 ">
+          <div class="px-8">
+            <h3 class="font-bold text-gray-900">About</h3>
+            <p class="py-4 text-gray-600 text-sm">
+              My name is Daniel Tenner. I am a serial entrepreneur and investor. Lately, I've been diving deep into web3, NFTs, how they're going to change the world, and how to invest (more) wisely in them.
+            </p>
+          </div>
+        </div>
+
+                <div class="flex w-full md:w-1/2">
+          <div class="px-8">
+            <h3 class="font-bold text-gray-900">Social</h3>
+            <ul class="list-reset items-center text-sm pt-3">
+              <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="http://twitter.com/swombat">Twitter</a>
+              </li>
+              <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="https://discord.gg/QRsME3kEyq">Discord</a>
+              </li>
+<!--               <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
+              </li>
+ -->            </ul>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+  </footer>
+
+  </body>
+</html>
