@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Smart contract design for rug-free mints - swombat.io</title>
+    <link href="/css/main.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  </head>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+        <nav id="header" class="fixed w-full z-10 top-0 block bg-gray-100">
+
+      <div id="progress" class="h-1 z-20 top-0" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
+
+      <div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+
+        <div class="pl-4">
+          <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl font-mono" href="#">
+            swombat.io
+          </a>
+        </div>
+
+                <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 z-20" id="nav-content">
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/index.html">Latest Threads</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/markethealth.html">Market Health</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/categories.html">Categories</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/transparency.html">Transparency</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+    </nav>
+
+
+  <!--Container-->
+  <div class="container w-full md:max-w-3xl mx-auto pt-20">
+
+          <!--Title-->
+      <div class="font-sans">
+        <p class="text-base md:text-sm text-green-500 font-bold">&lt; <a href="/index.html" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline">BACK</a></p>
+            <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Smart contract design for rug-free mints</h1>
+            <p class="text-sm md:text-base font-normal text-gray-600">Published 12 Feb 2022</p>
+      </div>
+
+
+    <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal prose">
+
+      <div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Better smart contract design is, imho, one of the pillars of improving the NFT space in the coming year.<br /><br />Not only that, though, it can also be a powerful tool for improving the chances of success of your project.<br /><br />This is another place where honest ppl&#39;s incentives align.<br /><br />👇 <a href="https://t.co/veUnvN4A8m">pic.twitter.com/veUnvN4A8m</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484783036936192?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<!--more-->
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">First of all, I want to really thank <a href="https://twitter.com/Intenex?ref_src=twsrc%5Etfw">@Intenex</a> and <a href="https://twitter.com/mai_on_chain?ref_src=twsrc%5Etfw">@mai_on_chain</a>, the founders of <a href="https://twitter.com/CuriousAddys?ref_src=twsrc%5Etfw">@CuriousAddys</a>, for their time answering endless questions.<br /><br />This thread is about 90% their thinking, with a few of my own thoughts on the topic. They are the pioneers here, though. <a href="https://t.co/PqFTDuXKit">pic.twitter.com/PqFTDuXKit</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484787759628293?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">CATC is, afaik, the first project that pioneered sensible smart contract security. So far, it&#39;s the only one, I believe.<br /><br />Those who haven&#39;t read ALL my threads might have missed the one where I talked about CATC&#39;s smart contract security, back in mid Nov. <a href="https://t.co/yd6Bn9PfMF">https://t.co/yd6Bn9PfMF</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484788846043136?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">The long and short of it is: For the first 100 days, anyone holding a CATC could call a refund function on the smart contract, return their Addy, and get the mint price transferred back to their wallet. All funds were locked in the contract for those 100 days.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484789848391684?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I hope that by the end of the year, NFT projects without smart contract security far beyond what CATC achieved will be the norm, and any NFT project that lacks those features will be treated like an anomaly.<br /><br />Disclosure: I am invested in CATC: <a href="https://t.co/iLf1J6ZC88">https://t.co/iLf1J6ZC88</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484790590791687?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">The primary impulse behind CATC&#39;s innovation was something I can very much get behind: a desire to make the NFT space safer, and a bewilderment that Ethereum&#39;s capability to build trustless systems was simply not being used. <a href="https://t.co/uGILx2A1FV">pic.twitter.com/uGILx2A1FV</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484795108057095?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">But even right at the start, the CATC founders felt there were benefits to the project as well. Many project founders will confirm that managing NFT investors, just like stakeholders in any project, can be a job in itself. Esp when a large % of those are hype-chasing flippers! <a href="https://t.co/vhDPJNA0o5">pic.twitter.com/vhDPJNA0o5</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484800728469504?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">So the CATC founders hoped that by creating that 100 day breathing room, they would avoid a lot of those headaches and be able to focus on actually building up the project&#39;s value.<br /><br />It actually played out differently... and, to their surprise, better. <a href="https://t.co/LMa1TdNkU6">pic.twitter.com/LMa1TdNkU6</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484805522505729?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I found that surprising too. When I discovered CATC, the floor was hovering around the mint price (0.08). I bought several around 0.07, safe in the knowledge that, if the project didn&#39;t deliver some tangible value by mid February, I could get a refund.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484806629806081?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I don&#39;t really get why nearly 20% of ppl ended up going for the refund anyway. I guess they are the same people who mint a Pixelmon at 3 Eth and immediately list it at 2.8. They bought for a quick flip. It&#39;s not happening, so they want their capital back immediately.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484807447695362?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I&#39;ve previously said that investors, and to a larger extent short term traders/flippers, are dead weight for a project building with club mechanics. And that&#39;s true for CATC too. And here&#39;s where the surprise came in:<br /><br />Refunds eliminated the flippers from the project. <a href="https://t.co/QhVVwtBFD4">pic.twitter.com/QhVVwtBFD4</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484812879405063?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">This was not an effect <a href="https://twitter.com/Intenex?ref_src=twsrc%5Etfw">@Intenex</a> and <a href="https://twitter.com/mai_on_chain?ref_src=twsrc%5Etfw">@Mai_on_chain</a> expected, but it is what happened.<br /><br />I find it interesting to view this in terms of the club mechanics that I discussed here: <a href="https://t.co/JYmNckzELJ">https://t.co/JYmNckzELJ</a><br /><br />Some of the yellow investors are short-term flippers.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484814351605761?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">If investors are dead weight, short term flippers are actively pulling the project down. They are the ones most likely to moan about the floor, complain that the project isn&#39;t mooning yet 2 days after buying, and generally spread bummed out vibes through the Discord.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484815463100421?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">With enough flippers, even if there is a core of ideal members, they might end up driven out of the project by all the complaining, unless the project develops strong defences against such topics (like the Lions &quot;roars &gt; floors&quot; or the Coven&#39;s &quot;lore &gt; floor&quot; memes).</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484816289288192?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">So there is a long-term effect that improves the project. I also believe there is a very, very strong short term benefit to offering this easy way out to flippers: not only it means founders don&#39;t need to worry about the floor, it means the floor can&#39;t drop much below mint.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484817119809537?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">As we saw with the poorly handled Pixelmon launch, sometimes, even with mountains of hype, the floor drops dramatically after launch, because all those flippers sense the wind going in the wrong direction, are desperate to get out, and undercut each other.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484818029977602?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">With CATC, the floor rarely dropped below 0.07, which I think accounted for the 0.01 of gas that the refund might cost. Anything below that was snapped up as a basically risk free purchase. So the floor really did take care of itself. <a href="https://t.co/cRQgk0dEDK">pic.twitter.com/cRQgk0dEDK</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484824707309575?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Of course, if your reason for launching the project was just to grab as much cash as possible, you don&#39;t really care what happens after launch and so refunds make no sense.<br /><br />Let the dogs fight with each other over the meatless bones of the secondary market. <a href="https://t.co/tP3ClLiiV5">pic.twitter.com/tP3ClLiiV5</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484847444676614?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">But if you&#39;re trying to build a long-term community, then hopefully you understand that the quality of that community, and how bought in they are to the project&#39;s long term vision, is supremely important.<br /><br />So actually every refund gets rid of a flipper and improves the project.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484848786812934?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">And improving an existing community is really hard work. It turns out that with the right smart contract design, you can just pay to make the problem go away. <a href="https://t.co/ElTFzrEuz6">pic.twitter.com/ElTFzrEuz6</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484853509632010?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Can all projects afford to do this, though? <a href="https://twitter.com/CuriousAddys?ref_src=twsrc%5Etfw">@CuriousAddys</a> was in a special position because <a href="https://twitter.com/Intenex?ref_src=twsrc%5Etfw">@Intenex</a> and <a href="https://twitter.com/mai_on_chain?ref_src=twsrc%5Etfw">@Mai_on_chain</a> were wealthy enough to fund the project costs from their own pocket for the first 100 days. Not every founder has that sort of wealth, or is willing to risk it.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484854793097218?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">By the way, if you like this thread, I have more like it at <a href="https://t.co/X91GS2YlJN">https://t.co/X91GS2YlJN</a> - I also post NFT market health reports daily, you might enjoy learning about them at <a href="https://t.co/tuySNnEcMB">https://t.co/tuySNnEcMB</a> .<br /><br />If you love this thread, I&#39;d appreciate if you share it with others.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484855585779717?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I think there are many ways to structure the smart contract security. CATC pioneered just one such way. I think we&#39;ll have to experiment a lot more to find the best one. And probably different ones will be optimal for different situations.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484856453947392?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">The CATC founders suggested one that assumes that there won&#39;t be more than 50% of refunds.<br /><br />Personally I think this way is risky. If the wind turns and you do get 50% of refunds the project is really in dire straits. <a href="https://t.co/QezkjMxoCv">pic.twitter.com/QezkjMxoCv</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492484861428641795?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">And by creating an end point where refunds are no longer possible, it incentivises more early refunds, in a &quot;bank run&quot; sort of way, where being the first to withdraw is advantageous so everyone rushes.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485014008827905?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Another approach they suggest is a more progressive approach. I like that one, though I think it is probably better as a smooth progression, where each day reduces the refund amount by a little bit, rather than abrupt drops at 25%, 50%, etc. <a href="https://t.co/Swr7WK8FNY">pic.twitter.com/Swr7WK8FNY</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485020547756034?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">My contribution here might be a suggestion to also just try refunds that decrease as the project spends the funds productively. That will require the project to be transparent both about its spending, and what it gets for that spending.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485021873098754?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">And whilst that would not work at all with flippers and short term traders as investors, my sense is that usually people who are passionate about the project or are long term investors are willing to be patient and accept the project will spend money, make mistakes, etc</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485022678409220?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">So if the refund mechanic does drive all the flippers out, transparency and progressive reduction of the refund might provide the best of both worlds: funds available for the project, and a smooth refund scheduling without a scary cliff.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485023584370696?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Part of the principle that drives me is one that&#39;s been hard-earned through years of client management in the business I founded, <a href="https://twitter.com/GrantTree?ref_src=twsrc%5Etfw">@GrantTree</a>. If I were to start a new services business, I would definitely make this a core part of the pricing approach:</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485024377147397?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">&gt; If you&#39;re not happy with the service I&#39;m providing, I don&#39;t want your money.<br /><br />The same principle can apply to NFTs. If you&#39;re not happy being a holder of this project, I don&#39;t want your mint money.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485025140547591?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Of course, applying this principle is hard, if not impossible, for cash grab projects.<br /><br />Which is great. If all the non-cash-grab projects implement this, we&#39;ll be able to tell them apart from the cash grabs instantly!! Fantastic!<br /><br />*** Genuine projects please pay attention! :-)</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485026000384001?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">If there is a cliff, should it be at 100 days? <a href="https://twitter.com/Intenex?ref_src=twsrc%5Etfw">@Intenex</a> felt that 100 days made sense as compared to the timelines of incubators like <a href="https://twitter.com/ycombinator?ref_src=twsrc%5Etfw">@Ycombinator</a>. I felt more drawn to the longer vesting schedules of startups (typically several years). This led me to a new perspective. <a href="https://t.co/6Z94IaKmCL">pic.twitter.com/6Z94IaKmCL</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485033004867591?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I&#39;ve been arguing for a little while that NFTs and shares should not map 1:1 ( <a href="https://t.co/D1dUi8BVvL">https://t.co/D1dUi8BVvL</a> ).<br /><br />I also don&#39;t believe that NFT creators should treat mint day as a payday. There might be exceptions, which I&#39;ll get to in a moment, but the mint money is the project funds.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485034565160965?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">But if so, how are founders and team members rewarded? You could just give them NFTs, but that&#39;s a bit odd, feels a bit awkward. And if so, your NFTs might turn into securities. Alternatively, you can give them shares, but that also feels a bit antiquated and complex.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485035609542660?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">An interesting alternative is for the project to have two kinds of tokens: NFTs, and ERC20 tokens.<br /><br />The NFTs are used for public fund-raising, and share value in a way that *doesn&#39;t* make them securities, as discussed in the previous thread.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485036570034182?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">The ERC20 token is used for internal ownership allocation, which can then be vested according to whatever rules the project decides internally.<br /><br />Because they&#39;re not offered for public sales, those ERC20 tokens don&#39;t breach securities law.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485037392109571?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Later on, perhaps in a more clement SEC climate, or after speaking to enough lawyers to make this work, the ERC20 tokens can also be made liquid via an ENS-like airdrop. This then becomes how the founders and core team are rewarded long term.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485038155436033?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">What about their personal day to day costs until then? Well those are paid for just like in any other startup: by drawing a reasonable salary from the project funds.<br /><br />I&#39;d like to coin a name for this pattern: Separation of Incentives.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485038952402953?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">I think it is also a positive pattern for improving the security of NFT projects, because it also solves the &quot;instant founder liquidity&quot; problem, where founders get a giant pile of cash upfront and so have no more incentive to solve the hard problem they promised to work on.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485039828918279?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">It&#39;s hard to work on hard problems. Often one of the reasons why founders work so hard *is* because they hope to be richly rewarded for their efforts. It&#39;s understandable that a founder that goes from broke to $1m net worth is going to find their motivations change.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485040630022145?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Separation of Incentives solves this. The project is funded by an NFT sale. Founders/staff draw reasonable salaries from it, and receive ERC20 tokens instead of options. When plausible, an airdrop liquidity event finally enables founders to cash out *and* distribute ownership.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485041468891138?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">This of course doesn&#39;t make sense for all projects. Artists that use NFTs to distribute art are justified in regarding the mint day as their personal payday. That&#39;s how art works.<br /><br />It depends on the project pitch.<br /><br />Projects that have a roadmap are, however, basically startups. <a href="https://t.co/y8byzCJDQ5">pic.twitter.com/y8byzCJDQ5</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485047273807872?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">This already feels like a really rich thread full of ideas for founders, that I hope get implemented. And please remember that most of these ideas are coming from <a href="https://twitter.com/mai_on_chain?ref_src=twsrc%5Etfw">@Mai_on_chain</a> and <a href="https://twitter.com/Intenex?ref_src=twsrc%5Etfw">@Intenex</a>. I&#39;m adding my 2 gwei but leveraging their thinking.<br /><br />I&#39;d like to leave you with one more.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485049471668227?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">At first, I thought that refunded Addys were burned. But that isn&#39;t so.<br /><br />Actually refunded Addys are sent to a refund address, under the control of the project.<br /><br />This makes a lot of sense in a lot of ways.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485050314727426?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">A lot of projects implement floor sweeps. Those are, imho, rather awkward ways to go about showing belief in the project. They feel more like floor manipulation. And they&#39;re a bit random and don&#39;t really create a sense of security.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485051157778435?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">But it is right that founders should believe in their own project more than most. The principle is not wrong.<br /><br />Refunds basically are like automated, ongoing floor sweeps that guarantee the floor cannot sink far below mint price.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485052009168896?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">If you believe in your own project, and you believe the mint price was fair, and the project is building more value every day, then everyone wanting to flip below mint or refund is selling their NFTs short. You have the funds, so why not just buy them out?</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485052911042561?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Then, a few months down the line, when the project has shown its value and floor is up, you can release those NFTs, bought so very cheap, back on the market. Or use them to grant membership to worthy applicants. There are so many options. <a href="https://t.co/vUFr5LZbS6">pic.twitter.com/vUFr5LZbS6</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485058388643842?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Of course, each such refund is an additional risk that the project takes - if too many ppl refund, the project could run out of funds.<br /><br />But I think that&#39;s ok. Right now, the balance is way out of whack: all the risk is on the investors, none on the founders! <a href="https://t.co/yVb1ZD7m91">pic.twitter.com/yVb1ZD7m91</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485064353107971?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">We can afford to tilt that balance back a little bit towards a more even spread, I reckon.<br /><br />And the more we do so, following <a href="https://twitter.com/cdixon?ref_src=twsrc%5Etfw">@cdixon</a>&#39;s &quot;can&#39;t be evil &gt; don&#39;t be evil&quot; mantra, the more we realise the promise of web3, and built a fundraising world that doesn&#39;t need the SEC.</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485065917579269?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">TL;DR:<br />- smart contracts can increase security of projects and reduce rug risks<br />- currently underutilised<br />- refunds are actually better for projects that rely on their community<br />- Separation of Incentives should be explored more<br /><br />gm &amp; gl! &amp; thanks <a href="https://twitter.com/Intenex?ref_src=twsrc%5Etfw">@Intenex</a> &amp; <a href="https://twitter.com/mai_on_chain?ref_src=twsrc%5Etfw">@Mai_on_chain</a> <a href="https://t.co/lauA0Ldcs0">pic.twitter.com/lauA0Ldcs0</a></p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485070724153348?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">PS: Please remember that if you enjoy this thread, I would be happy if you shared it. Here&#39;s the initial tweet: <a href="https://t.co/jP0ViIJ5Kz">https://t.co/jP0ViIJ5Kz</a><br /><br />Also, if you liked this format of a Discord interview turned into a thread, let me know and I might do more of them!<br /><br />❤️🧡💛💚💙💜</p>&mdash; Daniel Tenner (swombat.eth) (@swombat) <a href="https://twitter.com/swombat/status/1492485512736788488?ref_src=twsrc%5Etfw">February 12, 2022</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+
+
+    </div>
+
+  </div>
+
+  <!--Divider-->
+  <div class="px-8"></div>
+
+    <footer class="bg-white border-t border-gray-400 shadow">
+    <div class="container max-w-4xl mx-auto flex py-8">
+
+      <div class="w-full mx-auto flex flex-wrap">
+
+                <div class="flex w-full md:w-1/2 ">
+          <div class="px-8">
+            <h3 class="font-bold text-gray-900">About</h3>
+            <p class="py-4 text-gray-600 text-sm">
+              My name is Daniel Tenner. I am a serial entrepreneur and investor. Lately, I've been diving deep into web3, NFTs, how they're going to change the world, and how to invest (more) wisely in them.
+            </p>
+          </div>
+        </div>
+
+                <div class="flex w-full md:w-1/2">
+          <div class="px-8">
+            <h3 class="font-bold text-gray-900">Social</h3>
+            <ul class="list-reset items-center text-sm pt-3">
+              <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="http://twitter.com/swombat">Twitter</a>
+              </li>
+              <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="https://discord.gg/QRsME3kEyq">Discord</a>
+              </li>
+<!--               <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
+              </li>
+ -->            </ul>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+  </footer>
+
+  </body>
+</html>
