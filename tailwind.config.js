@@ -6,6 +6,7 @@ module.exports = {
     './_posts/*.markdown',
     './*.html',
     './*.md',
+    './relevance.md',
   ],
   darkMode: false,
   theme: {
