@@ -59,27 +59,37 @@
 
     <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal prose">
 
-      <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+      ## Calculation
 
-<div class="container">
-  <h1>404</h1>
+Rather than default to easy (but unhelpful) metrics like floor price, daily volume or "market cap", in order to calculate the relevance of a project I've opted to borrow the concept of "circulating supply" from crypto.
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+A project is more relevant if:
 
+* more of its tokens are being traded
+* they're being traded at a higher price
+* that trading keeps happening over a longer period
+
+The basic formula for relevance becomes really simple:
+
+<code>For a given period period, multiply the number of distinct tokens traded by the average price over that period</code>
+
+What period to pick? In a fast-moving space like NFTs, I decided to favour recent activity but also reward long-term, solid trading. Relevance does get lost over time, but not *that* fast.
+
+So I decided to add the relevance ratings for 3 periods:
+
+* the last month
+* the last 3 months
+* the last 6 months
+
+This leads to a rating that will go up only for the first six months, but at very different rates depending on the project. Some projects will make it to the top in their first few days (World of Women Galaxies is an example). Others will take longer. Some projects, like BAYC and Crypto Punks, are still building more relevance every day much later than 6 months after launch. Others are slowly fading into irrelevance.
+
+If a project you think should be tracked isn't on the list, please [send me a tweet](https://twitter.com/swombat) or [find me on Discord](https://discord.gg/QRsME3kEyq). I'll add it as soon as I can.
+
+And yes, at some point I'll build some way to chart all this stuff. I'm just one guy though, give me some time :-)
+
+## The projects
+
+<!-- replace from here -->
 
     </div>
 
