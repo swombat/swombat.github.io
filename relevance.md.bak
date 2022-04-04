@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> - swombat.io</title>
+    <link href="css/main.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/embeddable-nfts/dist/nft-card.min.js"></script>
+  </head>
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+        <nav id="header" class="fixed w-full z-10 top-0 block bg-gray-100">
+
+      <div id="progress" class="h-1 z-20 top-0" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
+
+      <div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+
+        <div class="pl-12 lg:hidden">
+          <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl font-mono" href="#">
+            swombat.io
+          </a>
+        </div>
+
+        <div class="pl-4 hidden lg:block">
+          <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl font-mono" href="#">
+            swombat.io
+          </a>
+        </div>
+
+                <div class="w-full flex-grow flex items-center w-auto w-auto block mt-2 mt-0 bg-gray-100 z-20" id="nav-content">
+          <ul class="list-reset flex justify-end flex-1 items-center">
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/index.html">Latest Threads</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/categories.html">All</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/markethealth.html">Market Health</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/relevance.html">Index</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/transparency.html">Transparency</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="/about.html">About</a>
+            </li>
+          </ul>
+        </div>
+
+
+      </div>
+    </nav>
+
+
+  <!--Container-->
+  <div class="container w-full md:max-w-3xl mx-auto pt-20">
+
+    <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal prose">
+
+      ## Calculation
+
+Rather than default to easy (but unhelpful) metrics like floor price, daily volume or "market cap", in order to calculate the relevance of a project I've opted to borrow the concept of "circulating supply" from crypto.
+
+A project is more relevant if:
+
+* more of its tokens are being traded
+* they're being traded at a higher price
+* that trading keeps happening over a longer period
+
+The basic formula for relevance becomes really simple:
+
+<code>For a given period period, multiply the number of distinct tokens traded by the average price over that period</code>
+
+What period to pick? In a fast-moving space like NFTs, I decided to favour recent activity but also reward long-term, solid trading. Relevance does get lost over time, but not *that* fast.
+
+So I decided to add the relevance ratings for 3 periods:
+
+* the last month
+* the last 3 months
+* the last 6 months
+
+This leads to a rating that will go up only for the first six months, but at very different rates depending on the project. Some projects will make it to the top in their first few days (World of Women Galaxies is an example). Others will take longer. Some projects, like BAYC and Crypto Punks, are still building more relevance every day much later than 6 months after launch. Others are slowly fading into irrelevance.
+
+If a project you think should be tracked isn't on the list, please [send me a tweet](https://twitter.com/swombat) or [find me on Discord](https://discord.gg/QRsME3kEyq). I'll add it as soon as I can.
+
+And yes, at some point I'll build some way to chart all this stuff. I'm just one guy though, give me some time :-)
+
+## The projects
+
+<!-- replace from here -->
+
+    </div>
+
+  </div>
+
+  <!--Divider-->
+  <div class="px-8"><br/><br/></div>
+
+    <footer class="bg-white border-t border-gray-400 shadow">
+    <div class="container max-w-4xl mx-auto flex py-8">
+
+      <div class="w-full mx-auto flex flex-wrap">
+
+                <div class="flex w-full md:w-1/2 ">
+          <div class="px-8">
+            <h3 class="font-bold text-gray-900">About</h3>
+            <p class="py-4 text-gray-600 text-sm">
+              My name is Daniel Tenner. I am a serial entrepreneur and investor. Lately, I've been diving deep into web3, NFTs, how they're going to change the world, and how to invest (more) wisely in them.
+            </p>
+          </div>
+        </div>
+
+                <div class="flex w-full md:w-1/2">
+          <div class="px-8">
+            <h3 class="font-bold text-gray-900">Social</h3>
+            <ul class="list-reset items-center text-sm pt-3">
+              <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="http://twitter.com/swombat">Twitter</a>
+              </li>
+              <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="https://discord.gg/QRsME3kEyq">Discord</a>
+              </li>
+<!--               <li>
+                <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="#">Add social link</a>
+              </li>
+ -->            </ul>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+  </footer>
+
+  </body>
+</html>
